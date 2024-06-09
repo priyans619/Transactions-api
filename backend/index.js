@@ -11,14 +11,15 @@ app.get('/', (request, response) => {
   return response.status(201).send('Welcome to Transaction-API')
 });
 
-app.listen(PORT, () => {
-  console.log(`App is listening to port: ${PORT}`)
-})
 
 mongoose
 .connect(mongoURL)
 .then(() => {
     console.log('Server is connected to database');
+    app.listen(PORT, () => {
+      console.log(`App is listening to port: ${PORT}`)
+    })
+    // append app.listen() in .then() method for server to run if db is disconnected
 })
 .catch((error) => {
     console.log(error);
