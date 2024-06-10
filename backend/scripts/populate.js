@@ -21,7 +21,7 @@ const generateUsers = async (numUsers) => {
   return users;
 };
 
-// fun generate random transactions for each user
+// func generate random transactions for each user
 const generateTransactions = async (users, numTransactionsPerUser) => {
   const transactions = [];
   for (const user of users) {
@@ -39,6 +39,20 @@ const generateTransactions = async (users, numTransactionsPerUser) => {
   await Transaction.insertMany(transactions);
 };
 
-
+// func to populate the database
+const populateDatabase = async () => {
+  try {
+    await mongoose.connection.dropDatabase();
+    const numUsers = 100;
+    const numTransactionsPerUser = 500;
+    const users = await generateUsers(numUsers);
+    await generateTransactions(users, numTransactionsPerUser);
+    console.log('Database populated successfully!');
+    mongoose.connection.close();
+  } catch (err) {
+    console.error(err);
+    mongoose.connection.close();
+  }
+};
 
 populateDatabase();
