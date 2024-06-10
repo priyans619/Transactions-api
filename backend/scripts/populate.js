@@ -21,6 +21,23 @@ const generateUsers = async (numUsers) => {
   return users;
 };
 
+// fun generate random transactions for each user
+const generateTransactions = async (users, numTransactionsPerUser) => {
+  const transactions = [];
+  for (const user of users) {
+    for (let i = 0; i < numTransactionsPerUser; i++) {
+      const transaction = new Transaction({
+        status: faker.helpers.arrayElement(['success', 'pending', 'failed']),
+        type: faker.helpers.arrayElement(['debit', 'credit']),
+        transactionDate: faker.date.past(),
+        amount: faker.finance.amount(),
+        userId: user._id
+      });
+      transactions.push(transaction);
+    }
+  }
+  await Transaction.insertMany(transactions);
+};
 
 
 
