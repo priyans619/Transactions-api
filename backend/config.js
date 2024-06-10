@@ -1,1 +1,3 @@
-export const PORT = 3030;
+export const PORT = process.env.PORT;
+
+export const mongoURL = process.env.mongoURL;
