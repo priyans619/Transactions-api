@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "e96f8435-f94b-4336-bad5-b16c0529279a",
+		"name": "Transaction-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31687432"
+	},
+	"item": [
+		{
+			"name": "User Detail by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3030/users/66674aaff52f7cf37a43cdba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"users",
+						"66674aaff52f7cf37a43cdba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All transaction for a user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/transactions/user/66674aaff52f7cf37a43cdba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"transactions",
+						"user",
+						"66674aaff52f7cf37a43cdba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User transaction by status= pending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/transactions/user/66674aaff52f7cf37a43cdba?status=pending&page=1&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"transactions",
+						"user",
+						"66674aaff52f7cf37a43cdba"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "pending"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All transactions for registered users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/transactions?status=success",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "success"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All transaction by status, failed | page, 1 | limit,10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/transactions?status=failed&page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "failed"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
