@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
 import userRoute from './routes/userRoute.js';
+import { connectDB } from './config/db.js';
 
 
 const app = express();
@@ -24,16 +24,10 @@ app.use('/users', userRoute);
 
 
 
-mongoose
-.connect(process.env.mongoURL)
-.then(() => {
-    console.log('Server is connected to database');
-    app.listen(process.env.PORT, () => {
-      console.log(`App is listening to port: ${process.env.PORT}`)
-    })
-    // append app.listen() in .then() method for server to run if db is disconnected
-})
-.catch((error) => {
-    console.log(error);
-
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log(`App is listening to port: ${process.env.PORT}`);
+  });
+}).catch((error) => {
+  console.log(error);
 });
