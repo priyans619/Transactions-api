@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import userRoute from './routes/userRoute.js';
+import transactionRoute from './routes/transactionRoute.js';
 import { connectDB } from './config/db.js';
 
 
@@ -21,7 +22,7 @@ app.use(express.json());
 
 // Middleware for all Routes
 app.use('/users', userRoute);
-
+app.use('/transactions', transactionRoute);
 
 
 connectDB().then(() => {
